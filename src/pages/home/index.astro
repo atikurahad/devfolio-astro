@@ -1,101 +1,305 @@
 ﻿---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import DeveloperIllustration from '../../components/DeveloperIllustration.astro';
 import { site } from '../../data/site.ts';
-const allSkills = [
-  { label: 'Frontend', items: site.skills.frontend },
-  { label: 'Backend', items: site.skills.backend },
-  { label: 'Database', items: site.skills.database },
-  { label: 'Tools', items: site.skills.tools },
+
+// Tech stack with devicon keys for icon display
+const techStack = [
+  { name: 'JavaScript', icon: 'javascript/javascript-original', category: 'frontend' },
+  { name: 'TypeScript', icon: 'typescript/typescript-original', category: 'frontend' },
+  { name: 'React', icon: 'react/react-original', category: 'frontend' },
+  { name: 'Next.js', icon: 'nextjs/nextjs-original', category: 'frontend' },
+  { name: 'HTML5', icon: 'html5/html5-original', category: 'frontend' },
+  { name: 'CSS3', icon: 'css3/css3-original', category: 'frontend' },
+  { name: 'Node.js', icon: 'nodejs/nodejs-original', category: 'backend' },
+  { name: 'Express.js', icon: 'express/express-original', category: 'backend' },
+  { name: 'MongoDB', icon: 'mongodb/mongodb-original', category: 'database' },
+  { name: 'PostgreSQL', icon: 'postgresql/postgresql-original', category: 'database' },
+  { name: 'MySQL', icon: 'mysql/mysql-original', category: 'database' },
+  { name: 'Git', icon: 'git/git-original', category: 'tools' },
+  { name: 'GitHub', icon: 'github/github-original', category: 'tools' },
+  { name: 'Docker', icon: 'docker/docker-original', category: 'tools' },
+  { name: 'Linux', icon: 'linux/linux-original', category: 'tools' },
+  { name: 'Figma', icon: 'figma/figma-original', category: 'tools' },
+  { name: 'Rust', icon: 'rust/rust-original', category: 'learning' },
+];
+
+const skillGroups = [
+  {
+    label: 'Frontend',
+    color: '#3b82f6',
+    items: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'HTML5', 'CSS3'],
+    icons: ['javascript/javascript-original','typescript/typescript-original','react/react-original','nextjs/nextjs-original','html5/html5-original','css3/css3-original'],
+  },
+  {
+    label: 'Backend',
+    color: '#10b981',
+    items: ['Node.js', 'Express.js', 'REST APIs', 'Authentication'],
+    icons: ['nodejs/nodejs-original','express/express-original','fastapi/fastapi-original','oauth/oauth-original'],
+  },
+  {
+    label: 'Databases',
+    color: '#f59e0b',
+    items: ['MongoDB', 'PostgreSQL', 'MySQL', 'RDBMS'],
+    icons: ['mongodb/mongodb-original','postgresql/postgresql-original','mysql/mysql-original','sqlite/sqlite-original'],
+  },
+  {
+    label: 'Tools',
+    color: '#8b5cf6',
+    items: ['Git', 'GitHub', 'Docker', 'Linux', 'Figma'],
+    icons: ['git/git-original','github/github-original','docker/docker-original','linux/linux-original','figma/figma-original'],
+  },
 ];
 ---
 <BaseLayout title="Home" description={site.headline}>
 
-  <section class="hero">
+  <!-- PAGE SKELETON (shown while JS loads) -->
+  <div class="page-skeleton" id="page-skeleton" aria-hidden="true">
     <div class="container">
-      <div class="hero-inner">
-        <div class="hero-badge fade-in">
-          <span class="badge-dot"></span>
-          {site.availability}
+      <div class="skel-hero">
+        <div class="skel-left">
+          <div class="skel-block skel-badge"></div>
+          <div class="skel-block skel-h1"></div>
+          <div class="skel-block skel-h2"></div>
+          <div class="skel-block skel-p"></div>
+          <div class="skel-block skel-p w70"></div>
+          <div class="skel-row">
+            <div class="skel-block skel-btn"></div>
+            <div class="skel-block skel-btn-sm"></div>
+          </div>
         </div>
-        <h1 class="hero-title fade-in fade-in-delay-1">
-          Hi, I&apos;m <span class="gradient-text">{site.name.split(' ')[0]}</span>
-        </h1>
-        <p class="fade-in fade-in-delay-1" style="font-size:clamp(1.4rem,3vw,2rem); font-weight:300; color:var(--text-secondary); margin-bottom:1rem;">
-          {site.role}
-        </p>
-        <p class="hero-subtitle fade-in fade-in-delay-2">{site.bio}</p>
-        <div class="hero-actions fade-in fade-in-delay-3">
-          <a href="/contact/" class="btn btn-primary">Get in touch &rarr;</a>
-          <a href="/about/" class="btn btn-outline">About me</a>
-        </div>
-        <div class="hero-stats fade-in fade-in-delay-4">
-          <div class="stat-item">
-            <span class="stat-label">Focus</span>
-            <span class="stat-value">{site.stats.focus}</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-label">Stack</span>
-            <span class="stat-value">{site.stats.stack}</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-label">Learning</span>
-            <span class="stat-value">{site.stats.learning}</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-label">Location</span>
-            <span class="stat-value">{site.location}</span>
-          </div>
+        <div class="skel-right">
+          <div class="skel-block skel-circle"></div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <p class="section-label fade-in">Skills and Technologies</p>
-      <h2 class="section-title fade-in fade-in-delay-1">What I work with</h2>
-      <p class="section-desc fade-in fade-in-delay-2">
-        A curated stack of tools and technologies I use to build reliable, scalable web applications.
-      </p>
-      <div class="skills-grid">
-        {allSkills.map((group, i) => (
-          <div class={`card fade-in fade-in-delay-${i + 1}`}>
-            <p class="skill-card-label">{group.label}</p>
-            <div class="skill-list">
-              {group.items.map(skill => (
-                <span class="skill-chip">{skill}</span>
+      <div class="skel-section-label">
+        <div class="skel-block skel-label"></div>
+        <div class="skel-block skel-htitle"></div>
+      </div>
+      <div class="skel-icon-row">
+        {Array.from({ length: 8 }).map(() => (
+          <div class="skel-icon-item">
+            <div class="skel-block skel-icon"></div>
+            <div class="skel-block skel-icon-lbl"></div>
+          </div>
+        ))}
+      </div>
+      <div class="skel-cards">
+        {Array.from({ length: 4 }).map(() => (
+          <div class="skel-card">
+            <div class="skel-block skel-label"></div>
+            <div class="skel-chips">
+              {Array.from({ length: 5 }).map(() => (
+                <div class="skel-block skel-chip"></div>
               ))}
             </div>
           </div>
         ))}
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="section" style="padding-top:0">
-    <div class="container">
-      <div class="card fade-in" style="background:linear-gradient(135deg, rgba(139,92,246,0.08), rgba(99,102,241,0.04));">
-        <p class="section-label" style="margin-bottom:0.5rem">Currently Exploring</p>
-        <h3 style="margin-bottom:1rem; color:var(--text)">Always learning, always growing</h3>
-        <div class="tags">
-          {site.skills.currentlyLearning.map(item => (
-            <span class="tag">{item}</span>
+  <!-- REAL CONTENT (hidden until loaded) -->
+  <div class="page-content" id="page-content">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-container">
+        <div class="hero-inner">
+          <div class="hero-badge fade-in">
+            <span class="badge-dot"></span>
+            {site.availability}
+          </div>
+          <h1 class="hero-title fade-in fade-in-delay-1">
+            Hi, I&apos;m <span class="gradient-text">{site.name.split(' ')[0]}</span>
+          </h1>
+          <p class="hero-role fade-in fade-in-delay-1">{site.role}</p>
+          <p class="hero-subtitle fade-in fade-in-delay-2">{site.bio}</p>
+          <div class="hero-actions fade-in fade-in-delay-3">
+            <a href="/contact/" class="btn btn-primary">Get in touch &rarr;</a>
+            <a href="/about/" class="btn btn-outline">About me</a>
+          </div>
+          <div class="hero-stats fade-in fade-in-delay-4">
+            <div class="stat-item">
+              <span class="stat-label">Focus</span>
+              <span class="stat-value">{site.stats.focus}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Stack</span>
+              <span class="stat-value">{site.stats.stack}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Learning</span>
+              <span class="stat-value">{site.stats.learning}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Location</span>
+              <span class="stat-value">{site.location}</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual fade-in fade-in-delay-2">
+          <DeveloperIllustration />
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH STACK ICON MARQUEE -->
+    <section class="tech-marquee-section">
+      <div class="container">
+        <p class="section-label fade-in" style="text-align:center; margin-bottom:1.5rem;">Technologies I use</p>
+      </div>
+      <div class="marquee-track-wrap">
+        <div class="marquee-track">
+          {[...techStack, ...techStack].map(tech => (
+            <div class="marquee-item">
+              <img
+                src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tech.icon}.svg`}
+                alt={tech.name}
+                width="36"
+                height="36"
+                loading="lazy"
+                class="marquee-icon"
+              />
+              <span class="marquee-label">{tech.name}</span>
+            </div>
           ))}
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section" style="padding-top:0">
-    <div class="container">
-      <div class="card fade-in" style="text-align:center; padding:3.5rem 2rem;">
-        <h2 style="margin-bottom:1rem;">Let&apos;s build something together</h2>
-        <p style="max-width:480px; margin:0 auto 2rem;">
-          I am currently open to freelance and full-time opportunities. If you have a project in mind, let&apos;s talk.
+    <!-- SKILLS WITH ICONS -->
+    <section class="section">
+      <div class="container">
+        <p class="section-label fade-in">Skills and Technologies</p>
+        <h2 class="section-title fade-in fade-in-delay-1">What I work with</h2>
+        <p class="section-desc fade-in fade-in-delay-2">
+          A full-stack toolkit for building scalable, production-ready web applications — from pixel-perfect UIs to robust backend systems.
         </p>
-        <a href="/contact/" class="btn btn-primary">Start a conversation</a>
+        <div class="skills-icon-grid">
+          {skillGroups.map((group, gi) => (
+            <div class={`card skill-icon-card fade-in fade-in-delay-${gi + 1}`} style={`--group-color: ${group.color}`}>
+              <div class="skill-icon-card-header">
+                <span class="skill-card-badge" style={`background:${group.color}22; color:${group.color}; border-color:${group.color}44`}>{group.label}</span>
+              </div>
+              <div class="skill-icon-list">
+                {group.items.map((item, ii) => (
+                  <div class="skill-icon-item" title={item}>
+                    <div class="skill-icon-box">
+                      <img
+                        src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${group.icons[ii] || 'javascript/javascript-original'}.svg`}
+                        alt={item}
+                        width="32"
+                        height="32"
+                        loading="lazy"
+                        class="skill-tech-icon"
+                        onerror="this.style.opacity='0.3'"
+                      />
+                    </div>
+                    <span class="skill-icon-name">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- DATABASE SPOTLIGHT -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <p class="section-label fade-in">Data Layer</p>
+        <h2 class="section-title fade-in fade-in-delay-1">Database expertise</h2>
+        <div class="db-spotlight-grid">
+          {[
+            { name: 'MongoDB', icon: 'mongodb/mongodb-original', desc: 'Document-oriented NoSQL database for flexible, scalable data modeling.', color: '#00ed64' },
+            { name: 'PostgreSQL', icon: 'postgresql/postgresql-original', desc: 'Advanced open-source RDBMS with ACID compliance and rich querying.', color: '#336791' },
+            { name: 'MySQL', icon: 'mysql/mysql-original', desc: 'Reliable relational database powering millions of web applications.', color: '#f29111' },
+            { name: 'SQLite', icon: 'sqlite/sqlite-original', desc: 'Lightweight serverless RDBMS, ideal for local and embedded apps.', color: '#0f80cc' },
+          ].map((db, i) => (
+            <div class={`card db-card fade-in fade-in-delay-${i + 1}`} style={`--db-color: ${db.color}`}>
+              <div class="db-card-icon-wrap">
+                <img
+                  src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${db.icon}.svg`}
+                  alt={db.name}
+                  width="52"
+                  height="52"
+                  loading="lazy"
+                />
+              </div>
+              <h3 class="db-card-name">{db.name}</h3>
+              <p class="db-card-desc">{db.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CURRENTLY LEARNING -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="card learning-card fade-in">
+          <div class="learning-card-inner">
+            <div>
+              <p class="section-label" style="margin-bottom:0.5rem">Currently Exploring</p>
+              <h3 style="margin-bottom:0.75rem; color:var(--text)">Always learning, always growing</h3>
+              <div class="learning-icons">
+                {[
+                  { name: 'Rust', icon: 'rust/rust-original' },
+                ].map(item => (
+                  <div class="learning-icon-item">
+                    <img src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${item.icon}.svg`} alt={item.name} width="36" height="36" loading="lazy" />
+                    <span>{item.name}</span>
+                  </div>
+                ))}
+                {site.skills.currentlyLearning.slice(1).map(item => (
+                  <div class="learning-tag-item">
+                    <span class="tag">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="card cta-card fade-in">
+          <div class="cta-glow"></div>
+          <h2 class="cta-title">Let&apos;s build something together</h2>
+          <p class="cta-desc">
+            I&apos;m currently open to freelance and full-time opportunities. If you have a project in mind, let&apos;s talk.
+          </p>
+          <div class="cta-actions">
+            <a href="/contact/" class="btn btn-primary">Start a conversation &rarr;</a>
+            <a href="/about/" class="btn btn-outline">Learn more about me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- end page-content -->
 
 </BaseLayout>
+
+<script>
+  // Show skeleton immediately, hide after page fully loaded
+  const skeleton = document.getElementById('page-skeleton');
+  const content = document.getElementById('page-content');
+  if (skeleton && content) {
+    content.style.opacity = '0';
+    window.addEventListener('load', () => {
+      skeleton.style.transition = 'opacity 0.4s ease';
+      skeleton.style.opacity = '0';
+      setTimeout(() => {
+        skeleton.style.display = 'none';
+        content.style.transition = 'opacity 0.5s ease';
+        content.style.opacity = '1';
+      }, 400);
+    });
+  }
+</script>

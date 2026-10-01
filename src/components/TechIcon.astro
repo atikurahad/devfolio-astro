@@ -1,0 +1,59 @@
+﻿---
+// TechIcon.astro — renders a devicon SVG image for a given tech name
+interface Props {
+  name: string;
+  size?: number;
+  showLabel?: boolean;
+}
+const { name, size = 40, showLabel = false } = Astro.props;
+
+// Map tech names to devicon keys
+const iconMap: Record<string, string> = {
+  'JavaScript': 'javascript/javascript-original',
+  'TypeScript': 'typescript/typescript-original',
+  'React': 'react/react-original',
+  'Next.js': 'nextjs/nextjs-original',
+  'Tailwind CSS': 'tailwindcss/tailwindcss-original',
+  'HTML': 'html5/html5-original',
+  'CSS': 'css3/css3-original',
+  'Node.js': 'nodejs/nodejs-original',
+  'Express.js': 'express/express-original',
+  'REST APIs': 'fastapi/fastapi-original',
+  'Authentication': 'oauth/oauth-original',
+  'API Architecture': 'swagger/swagger-original',
+  'MongoDB': 'mongodb/mongodb-original',
+  'SQL': 'mysql/mysql-original',
+  'RMDBS': 'postgresql/postgresql-original',
+  'PostgreSQL': 'postgresql/postgresql-original',
+  'Database Design': 'postgresql/postgresql-original',
+  'Database Normalization': 'mysql/mysql-original',
+  'Git': 'git/git-original',
+  'GitHub': 'github/github-original',
+  'Docker': 'docker/docker-original',
+  'Linux': 'linux/linux-original',
+  'Figma': 'figma/figma-original',
+  'Rust': 'rust/rust-original',
+};
+
+const key = iconMap[name];
+const src = key
+  ? `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${key}.svg`
+  : null;
+---
+<div class="tech-icon-wrap" title={name}>
+  {src ? (
+    <img
+      src={src}
+      alt={name}
+      width={size}
+      height={size}
+      loading="lazy"
+      class="tech-icon-img"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+    />
+  ) : null}
+  <span class="tech-icon-fallback" style={src ? 'display:none' : ''}>
+    {name.substring(0, 2)}
+  </span>
+  {showLabel && <span class="tech-icon-label">{name}</span>}
+</div>

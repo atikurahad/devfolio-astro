@@ -3,69 +3,121 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const posts = [
   {
     title: 'Building Scalable REST APIs with Node.js and Express',
-    date: 'Sep 20, 2026',
+    date: 'Sep 20, 2026', readTime: '8 min read',
     excerpt: 'A deep dive into designing and building production-ready REST APIs with proper authentication, error handling, and architecture patterns.',
     tags: ['Node.js', 'Express', 'REST API'],
-    slug: '#',
-    readTime: '8 min read',
+    tagIcons: ['nodejs/nodejs-original','express/express-original','fastapi/fastapi-original'],
   },
   {
     title: 'TypeScript Best Practices for React Developers',
-    date: 'Sep 10, 2026',
+    date: 'Sep 10, 2026', readTime: '6 min read',
     excerpt: 'Explore the most impactful TypeScript patterns and tips to write safer, more maintainable React applications.',
     tags: ['TypeScript', 'React'],
-    slug: '#',
-    readTime: '6 min read',
+    tagIcons: ['typescript/typescript-original','react/react-original'],
   },
   {
     title: 'MongoDB Schema Design: Patterns and Anti-Patterns',
-    date: 'Aug 28, 2026',
+    date: 'Aug 28, 2026', readTime: '10 min read',
     excerpt: 'Understanding how to model your data in MongoDB for performance, flexibility, and real-world scale.',
     tags: ['MongoDB', 'Database'],
-    slug: '#',
-    readTime: '10 min read',
+    tagIcons: ['mongodb/mongodb-original','postgresql/postgresql-original'],
   },
   {
     title: 'Getting Started with Astro: The Island Architecture',
-    date: 'Aug 15, 2026',
+    date: 'Aug 15, 2026', readTime: '5 min read',
     excerpt: 'Astro brings a fresh approach to web development. Here is how its island architecture makes your sites faster.',
     tags: ['Astro', 'Web Dev'],
-    slug: '#',
-    readTime: '5 min read',
+    tagIcons: ['astro/astro-original','javascript/javascript-original'],
   },
 ];
 ---
 <BaseLayout title="Blog" description="Articles on web development, JavaScript, TypeScript, and software engineering by Atikur Rahaman Ahad.">
 
-  <section class="section" style="padding-top:calc(var(--header-h) + 3rem)">
+  <!-- SKELETON -->
+  <div class="page-skeleton" id="page-skeleton" aria-hidden="true">
     <div class="container" style="max-width:800px;">
-
-      <p class="section-label fade-in">Blog</p>
-      <h1 class="fade-in fade-in-delay-1" style="margin-bottom:0.75rem;">
-        Thoughts on <span class="gradient-text">web engineering</span>
-      </h1>
-      <p class="fade-in fade-in-delay-2" style="margin-bottom:3rem;">
-        Articles on JavaScript, TypeScript, backend architecture, and whatever I am exploring at the moment.
-      </p>
-
-      <div class="blog-grid">
-        {posts.map((post, i) => (
-          <article class={`card fade-in fade-in-delay-${(i % 3) + 1}`}>
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.5rem;">
-              <span class="blog-card-date">{post.date}</span>
-              <span style="font-size:0.75rem; color:var(--muted);">{post.readTime}</span>
+      <div style="display:flex;flex-direction:column;gap:1.25rem;margin-bottom:3rem;">
+        <div class="skel-block skel-label"></div>
+        <div class="skel-block skel-h1"></div>
+        <div class="skel-block skel-p w70"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1.25rem;">
+        {Array.from({ length: 3 }).map(() => (
+          <div class="skel-card">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
+              <div class="skel-block skel-label" style="width:80px;"></div>
+              <div class="skel-block skel-label" style="width:70px;"></div>
             </div>
-            <h2 class="blog-card-title">{post.title}</h2>
-            <p class="blog-card-excerpt">{post.excerpt}</p>
-            <div class="tags" style="margin-top:0.75rem; margin-bottom:0.75rem;">
-              {post.tags.map(t => <span class="tag">{t}</span>)}
+            <div class="skel-block skel-h2" style="height:28px;width:90%;margin-bottom:0.75rem;"></div>
+            <div class="skel-block skel-p" style="margin-bottom:0.5rem;"></div>
+            <div class="skel-block skel-p w70"></div>
+            <div class="skel-chips" style="margin-top:1rem;">
+              <div class="skel-block skel-chip"></div>
+              <div class="skel-block skel-chip"></div>
             </div>
-            <a href={post.slug} class="blog-card-link">Read article &rarr;</a>
-          </article>
+          </div>
         ))}
       </div>
-
     </div>
-  </section>
+  </div>
+
+  <div class="page-content" id="page-content">
+    <section class="section" style="padding-top:calc(var(--header-h) + 3rem)">
+      <div class="container" style="max-width:800px;">
+        <p class="section-label fade-in">Blog</p>
+        <h1 class="fade-in fade-in-delay-1" style="margin-bottom:0.75rem;">
+          Thoughts on <span class="gradient-text">web engineering</span>
+        </h1>
+        <p class="fade-in fade-in-delay-2" style="margin-bottom:3rem;">
+          Articles on JavaScript, TypeScript, backend architecture, and whatever I am exploring at the moment.
+        </p>
+
+        <div class="blog-grid">
+          {posts.map((post, i) => (
+            <article class={`card blog-article-card fade-in fade-in-delay-${(i % 3) + 1}`}>
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.6rem;">
+                <span class="blog-card-date">{post.date}</span>
+                <span style="font-size:0.75rem; color:var(--muted);">{post.readTime}</span>
+              </div>
+              <h2 class="blog-card-title">{post.title}</h2>
+              <p class="blog-card-excerpt">{post.excerpt}</p>
+              <div style="display:flex; align-items:center; gap:0.6rem; margin-top:1rem; flex-wrap:wrap;">
+                {post.tags.map((tag, ti) => (
+                  <span style="display:inline-flex; align-items:center; gap:0.35rem; padding:0.25rem 0.65rem; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:8px; font-size:0.75rem; color:var(--text-secondary);">
+                    <img
+                      src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${post.tagIcons[ti] || 'javascript/javascript-original'}.svg`}
+                      alt={tag} width="14" height="14" loading="lazy"
+                      style="object-fit:contain;"
+                      onerror="this.style.display='none'"
+                    />
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <a href="#" class="blog-read-more">Read article &rarr;</a>
+            </article>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  </div>
 
 </BaseLayout>
+
+<script>
+  const skeleton = document.getElementById('page-skeleton');
+  const content = document.getElementById('page-content');
+  if (skeleton && content) {
+    content.style.opacity = '0';
+    window.addEventListener('load', () => {
+      skeleton.style.transition = 'opacity 0.4s ease';
+      skeleton.style.opacity = '0';
+      setTimeout(() => {
+        skeleton.style.display = 'none';
+        content.style.transition = 'opacity 0.5s ease';
+        content.style.opacity = '1';
+      }, 400);
+    });
+  }
+</script>

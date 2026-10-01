@@ -1,0 +1,46 @@
+﻿---
+// Skeleton.astro — skeleton loading placeholders
+interface Props {
+  type?: 'hero' | 'card' | 'text' | 'icon-grid';
+  count?: number;
+}
+const { type = 'card', count = 4 } = Astro.props;
+---
+{type === 'hero' && (
+  <div class="skeleton-hero">
+    <div class="skeleton skeleton-badge"></div>
+    <div class="skeleton skeleton-h1"></div>
+    <div class="skeleton skeleton-subtitle"></div>
+    <div class="skeleton skeleton-subtitle" style="width:70%"></div>
+    <div class="skeleton-actions">
+      <div class="skeleton skeleton-btn"></div>
+      <div class="skeleton skeleton-btn-sm"></div>
+    </div>
+  </div>
+)}
+
+{type === 'card' && (
+  <div class="skeleton-grid">
+    {Array.from({ length: count }).map(() => (
+      <div class="card skeleton-card">
+        <div class="skeleton skeleton-label"></div>
+        <div class="skeleton-chips">
+          {Array.from({ length: 5 }).map(() => (
+            <div class="skeleton skeleton-chip"></div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+)}
+
+{type === 'icon-grid' && (
+  <div class="skeleton-icon-grid">
+    {Array.from({ length: count }).map(() => (
+      <div class="skeleton-icon-item">
+        <div class="skeleton skeleton-icon-circle"></div>
+        <div class="skeleton skeleton-icon-label"></div>
+      </div>
+    ))}
+  </div>
+)}

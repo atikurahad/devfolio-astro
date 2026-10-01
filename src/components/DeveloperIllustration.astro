@@ -1,0 +1,62 @@
+﻿---
+// DeveloperIllustration.astro — animated SVG developer illustration
+---
+<div class="dev-illustration-wrap">
+  <div class="dev-avatar-ring">
+    <div class="dev-avatar-inner">
+      <!-- Animated developer SVG -->
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="dev-svg">
+        <!-- Background circle -->
+        <circle cx="100" cy="100" r="100" fill="url(#bg-grad)"/>
+        <!-- Monitor -->
+        <rect x="35" y="70" width="130" height="85" rx="8" fill="#1a1b26" stroke="#8b5cf6" stroke-width="2"/>
+        <rect x="35" y="70" width="130" height="16" rx="8" fill="#2d2f45"/>
+        <!-- Monitor stand -->
+        <rect x="85" y="155" width="30" height="12" rx="3" fill="#2d2f45"/>
+        <rect x="75" y="165" width="50" height="5" rx="2.5" fill="#2d2f45"/>
+        <!-- Code lines on screen -->
+        <rect x="50" y="98" width="45" height="5" rx="2.5" fill="#8b5cf6" opacity="0.9"/>
+        <rect x="50" y="110" width="70" height="5" rx="2.5" fill="#6366f1" opacity="0.7"/>
+        <rect x="60" y="122" width="55" height="5" rx="2.5" fill="#a78bfa" opacity="0.8"/>
+        <rect x="50" y="134" width="35" height="5" rx="2.5" fill="#8b5cf6" opacity="0.6"/>
+        <rect x="60" y="146" width="65" height="5" rx="2.5" fill="#6366f1" opacity="0.5"/>
+        <!-- Monitor dots -->
+        <circle cx="50" cy="78" r="3" fill="#ef4444"/>
+        <circle cx="61" cy="78" r="3" fill="#f59e0b"/>
+        <circle cx="72" cy="78" r="3" fill="#22c55e"/>
+        <!-- Floating icons -->
+        <g class="float-icon float-icon-1">
+          <circle cx="170" cy="50" r="18" fill="#1a1b26" stroke="#8b5cf6" stroke-width="1.5"/>
+          <text x="170" y="56" text-anchor="middle" font-size="14" fill="#8b5cf6">{}</text>
+        </g>
+        <g class="float-icon float-icon-2">
+          <circle cx="30" cy="55" r="18" fill="#1a1b26" stroke="#6366f1" stroke-width="1.5"/>
+          <text x="30" y="61" text-anchor="middle" font-size="12" fill="#6366f1">TS</text>
+        </g>
+        <g class="float-icon float-icon-3">
+          <circle cx="165" cy="160" r="16" fill="#1a1b26" stroke="#a78bfa" stroke-width="1.5"/>
+          <text x="165" y="165" text-anchor="middle" font-size="10" fill="#a78bfa">DB</text>
+        </g>
+        <defs>
+          <radialGradient id="bg-grad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#1a1b2e"/>
+            <stop offset="100%" stop-color="#0d0e17"/>
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+  <!-- Orbiting tech icons -->
+  <div class="orbit-ring orbit-1">
+    <div class="orbit-icon" style="--angle:0deg"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS" width="28" height="28"/></div>
+    <div class="orbit-icon" style="--angle:90deg"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" width="28" height="28"/></div>
+    <div class="orbit-icon" style="--angle:180deg"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" width="28" height="28"/></div>
+    <div class="orbit-icon" style="--angle:270deg"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TS" width="28" height="28"/></div>
+  </div>
+  <div class="orbit-ring orbit-2">
+    <div class="orbit-icon" style="--angle:45deg"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" width="24" height="24"/></div>
+    <div class="orbit-icon" style="--angle:135deg"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" width="24" height="24"/></div>
+    <div class="orbit-icon" style="--angle:225deg"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" width="24" height="24"/></div>
+    <div class="orbit-icon" style="--angle:315deg"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" width="24" height="24"/></div>
+  </div>
+</div>

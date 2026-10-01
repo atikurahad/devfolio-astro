@@ -1,104 +1,202 @@
 ﻿---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { site } from '../../data/site.ts';
+
+const skillsWithIcons = [
+  { category: 'Frontend', color: '#3b82f6', items: [
+    { name: 'JavaScript', icon: 'javascript/javascript-original' },
+    { name: 'TypeScript', icon: 'typescript/typescript-original' },
+    { name: 'React', icon: 'react/react-original' },
+    { name: 'Next.js', icon: 'nextjs/nextjs-original' },
+    { name: 'HTML5', icon: 'html5/html5-original' },
+    { name: 'CSS3', icon: 'css3/css3-original' },
+    { name: 'Tailwind CSS', icon: 'tailwindcss/tailwindcss-original' },
+  ]},
+  { category: 'Backend', color: '#10b981', items: [
+    { name: 'Node.js', icon: 'nodejs/nodejs-original' },
+    { name: 'Express.js', icon: 'express/express-original' },
+    { name: 'REST APIs', icon: 'fastapi/fastapi-original' },
+    { name: 'Authentication', icon: 'oauth/oauth-original' },
+  ]},
+  { category: 'Databases', color: '#f59e0b', items: [
+    { name: 'MongoDB', icon: 'mongodb/mongodb-original' },
+    { name: 'PostgreSQL', icon: 'postgresql/postgresql-original' },
+    { name: 'MySQL', icon: 'mysql/mysql-original' },
+    { name: 'SQLite', icon: 'sqlite/sqlite-original' },
+  ]},
+  { category: 'Tools', color: '#8b5cf6', items: [
+    { name: 'Git', icon: 'git/git-original' },
+    { name: 'GitHub', icon: 'github/github-original' },
+    { name: 'Docker', icon: 'docker/docker-original' },
+    { name: 'Linux', icon: 'linux/linux-original' },
+    { name: 'Figma', icon: 'figma/figma-original' },
+  ]},
+];
 ---
 <BaseLayout title="About" description="Learn more about Atikur Rahaman Ahad - Full Stack Web Developer from Bangladesh.">
 
-  <section class="section" style="padding-top:calc(var(--header-h) + 3rem)">
+  <!-- SKELETON -->
+  <div class="page-skeleton" id="page-skeleton" aria-hidden="true">
     <div class="container">
-      <div class="about-grid">
-
-        <div class="about-portrait fade-in">
-          <div class="portrait-frame">
-            <span>ARA</span>
-          </div>
-          <div class="about-meta">
-            <div class="meta-row">
-              <strong>Location</strong>
-              <span>{site.location}</span>
-            </div>
-            <div class="meta-row">
-              <strong>Role</strong>
-              <span>{site.role}</span>
-            </div>
-            <div class="meta-row">
-              <strong>Status</strong>
-              <span style="color:#4ade80">{site.availability}</span>
-            </div>
-          </div>
-          <div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:0.75rem;">
-            {site.socials.map(s => (
-              <a href={s.url || '#'} target="_blank" rel="noopener" class="btn btn-outline" style="justify-content:center;">
-                {s.label}
-              </a>
-            ))}
-          </div>
-        </div>
-
-        <div class="about-content">
-          <p class="section-label fade-in">About Me</p>
-          <h1 class="fade-in fade-in-delay-1" style="margin-bottom:1.5rem;">
-            Building <span class="gradient-text">meaningful</span> software
-          </h1>
-          <div class="fade-in fade-in-delay-2" style="display:flex; flex-direction:column; gap:1rem; margin-bottom:2.5rem;">
-            <p>{site.bio}</p>
-          </div>
-
-          <div class="fade-in fade-in-delay-3">
-            <p class="section-label" style="margin-bottom:0.75rem;">Areas of Focus</p>
-            <div class="tags">
-              {site.experience.focus.map(f => (
-                <span class="tag">{f}</span>
-              ))}
-            </div>
-          </div>
-
-          <hr class="divider" />
-
-          <div class="fade-in">
-            <p class="section-label" style="margin-bottom:0.75rem;">Interests</p>
-            <div class="tags">
-              {site.interests.map(i => (
-                <span class="skill-chip">{i}</span>
-              ))}
-            </div>
-          </div>
-
-          <hr class="divider" />
-
-          <div class="fade-in">
-            <p class="section-label" style="margin-bottom:1.25rem;">Technical Skills</p>
-            <div style="display:flex; flex-direction:column; gap:1.25rem;">
-              <div>
-                <p style="font-size:0.8rem; color:var(--muted); margin-bottom:0.6rem; text-transform:uppercase; letter-spacing:0.08em;">Frontend</p>
-                <div class="skill-list">
-                  {site.skills.frontend.map(s => <span class="skill-chip">{s}</span>)}
-                </div>
-              </div>
-              <div>
-                <p style="font-size:0.8rem; color:var(--muted); margin-bottom:0.6rem; text-transform:uppercase; letter-spacing:0.08em;">Backend</p>
-                <div class="skill-list">
-                  {site.skills.backend.map(s => <span class="skill-chip">{s}</span>)}
-                </div>
-              </div>
-              <div>
-                <p style="font-size:0.8rem; color:var(--muted); margin-bottom:0.6rem; text-transform:uppercase; letter-spacing:0.08em;">Database</p>
-                <div class="skill-list">
-                  {site.skills.database.map(s => <span class="skill-chip">{s}</span>)}
-                </div>
-              </div>
-              <div>
-                <p style="font-size:0.8rem; color:var(--muted); margin-bottom:0.6rem; text-transform:uppercase; letter-spacing:0.08em;">Tools</p>
-                <div class="skill-list">
-                  {site.skills.tools.map(s => <span class="skill-chip">{s}</span>)}
-                </div>
-              </div>
-            </div>
-          </div>
-
+      <div class="skel-about-grid">
+        <div><div class="skel-block skel-circle" style="width:240px;height:320px;border-radius:20px;"></div></div>
+        <div style="display:flex;flex-direction:column;gap:1.25rem;">
+          <div class="skel-block skel-label"></div>
+          <div class="skel-block skel-h1" style="height:54px;width:80%;"></div>
+          <div class="skel-block skel-p"></div>
+          <div class="skel-block skel-p w70"></div>
+          <div class="skel-block skel-p" style="width:85%;"></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+
+  <div class="page-content" id="page-content">
+    <section class="section" style="padding-top:calc(var(--header-h) + 3rem)">
+      <div class="container">
+        <div class="about-grid">
+
+          <!-- LEFT: Portrait + meta -->
+          <div class="about-portrait fade-in">
+            <div class="portrait-frame">
+              <!-- Stylized dev avatar -->
+              <svg viewBox="0 0 280 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+                <rect width="280" height="340" fill="url(#portrait-bg)"/>
+                <!-- Body -->
+                <rect x="70" y="220" width="140" height="120" rx="20" fill="#1e1f2e"/>
+                <!-- Shirt/Code design -->
+                <rect x="95" y="245" width="90" height="60" rx="8" fill="#2d2f45"/>
+                <rect x="105" y="255" width="30" height="4" rx="2" fill="#8b5cf6"/>
+                <rect x="105" y="265" width="50" height="4" rx="2" fill="#6366f1"/>
+                <rect x="115" y="275" width="40" height="4" rx="2" fill="#a78bfa"/>
+                <rect x="105" y="285" width="25" height="4" rx="2" fill="#8b5cf6"/>
+                <!-- Head -->
+                <ellipse cx="140" cy="160" rx="68" ry="72" fill="#f5c5a3"/>
+                <!-- Hair -->
+                <ellipse cx="140" cy="100" rx="68" ry="42" fill="#2c1810"/>
+                <ellipse cx="80" cy="130" rx="20" ry="32" fill="#2c1810"/>
+                <ellipse cx="200" cy="130" rx="20" ry="32" fill="#2c1810"/>
+                <!-- Eyes -->
+                <circle cx="118" cy="155" r="9" fill="white"/>
+                <circle cx="162" cy="155" r="9" fill="white"/>
+                <circle cx="120" cy="156" r="5" fill="#2c1810"/>
+                <circle cx="164" cy="156" r="5" fill="#2c1810"/>
+                <circle cx="122" cy="154" r="1.5" fill="white"/>
+                <circle cx="166" cy="154" r="1.5" fill="white"/>
+                <!-- Glasses -->
+                <rect x="106" y="147" width="26" height="17" rx="8" fill="none" stroke="#8b5cf6" stroke-width="2.5"/>
+                <rect x="149" y="147" width="26" height="17" rx="8" fill="none" stroke="#8b5cf6" stroke-width="2.5"/>
+                <line x1="132" y1="155" x2="149" y2="155" stroke="#8b5cf6" stroke-width="2"/>
+                <!-- Nose -->
+                <path d="M137 170 Q140 178 143 170" stroke="#d4956f" stroke-width="1.5" fill="none"/>
+                <!-- Smile -->
+                <path d="M125 185 Q140 198 155 185" stroke="#c17a5a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <!-- Laptop -->
+                <rect x="60" y="295" width="160" height="3" rx="1.5" fill="#3a3c52"/>
+                <defs>
+                  <linearGradient id="portrait-bg" x1="0" y1="0" x2="280" y2="340" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#1a1b2e"/>
+                    <stop offset="100%" stop-color="#0d0e18"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="about-meta">
+              <div class="meta-row"><strong>Location</strong><span>{site.location}</span></div>
+              <div class="meta-row"><strong>Role</strong><span>{site.role}</span></div>
+              <div class="meta-row"><strong>Status</strong><span style="color:#4ade80">{site.availability}</span></div>
+            </div>
+            <div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:0.75rem;">
+              {site.socials.map(s => (
+                <a href={s.url || '#'} target="_blank" rel="noopener" class="btn btn-outline" style="justify-content:center;">
+                  {s.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <!-- RIGHT: Content -->
+          <div class="about-content">
+            <p class="section-label fade-in">About Me</p>
+            <h1 class="fade-in fade-in-delay-1" style="margin-bottom:1.5rem;">
+              Building <span class="gradient-text">meaningful</span> software
+            </h1>
+            <div class="fade-in fade-in-delay-2" style="display:flex; flex-direction:column; gap:1rem; margin-bottom:2.5rem;">
+              <p>{site.bio}</p>
+            </div>
+
+            <div class="fade-in fade-in-delay-3">
+              <p class="section-label" style="margin-bottom:0.75rem;">Areas of Focus</p>
+              <div class="tags">
+                {site.experience.focus.map(f => <span class="tag">{f}</span>)}
+              </div>
+            </div>
+
+            <hr class="divider" />
+
+            <!-- Skills with icons -->
+            <div class="fade-in">
+              <p class="section-label" style="margin-bottom:1.5rem;">Technical Skills</p>
+              <div style="display:flex; flex-direction:column; gap:2rem;">
+                {skillsWithIcons.map(group => (
+                  <div>
+                    <p class="skill-cat-label" style={`color:${group.color}`}>{group.category}</p>
+                    <div class="about-skill-icon-row">
+                      {group.items.map(item => (
+                        <div class="about-skill-icon-item" title={item.name}>
+                          <div class="about-skill-icon-box">
+                            <img
+                              src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${item.icon}.svg`}
+                              alt={item.name}
+                              width="30"
+                              height="30"
+                              loading="lazy"
+                              onerror="this.style.opacity='0.3'"
+                            />
+                          </div>
+                          <span class="about-skill-icon-lbl">{item.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <hr class="divider" />
+
+            <div class="fade-in">
+              <p class="section-label" style="margin-bottom:0.75rem;">Currently Learning</p>
+              <div class="learning-icons" style="margin-top:0;">
+                <div class="learning-icon-item">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg" alt="Rust" width="30" height="30" loading="lazy"/>
+                  <span>Rust</span>
+                </div>
+                {site.skills.currentlyLearning.slice(1).map(i => <span class="tag">{i}</span>)}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 
 </BaseLayout>
+
+<script>
+  const skeleton = document.getElementById('page-skeleton');
+  const content = document.getElementById('page-content');
+  if (skeleton && content) {
+    content.style.opacity = '0';
+    window.addEventListener('load', () => {
+      skeleton.style.transition = 'opacity 0.4s ease';
+      skeleton.style.opacity = '0';
+      setTimeout(() => {
+        skeleton.style.display = 'none';
+        content.style.transition = 'opacity 0.5s ease';
+        content.style.opacity = '1';
+      }, 400);
+    });
+  }
+</script>
