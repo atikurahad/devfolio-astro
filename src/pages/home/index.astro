@@ -1,0 +1,101 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site.ts';
+const allSkills = [
+  { label: 'Frontend', items: site.skills.frontend },
+  { label: 'Backend', items: site.skills.backend },
+  { label: 'Database', items: site.skills.database },
+  { label: 'Tools', items: site.skills.tools },
+];
+---
+<BaseLayout title="Home" description={site.headline}>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-badge fade-in">
+          <span class="badge-dot"></span>
+          {site.availability}
+        </div>
+        <h1 class="hero-title fade-in fade-in-delay-1">
+          Hi, I&apos;m <span class="gradient-text">{site.name.split(' ')[0]}</span>
+        </h1>
+        <p class="fade-in fade-in-delay-1" style="font-size:clamp(1.4rem,3vw,2rem); font-weight:300; color:var(--text-secondary); margin-bottom:1rem;">
+          {site.role}
+        </p>
+        <p class="hero-subtitle fade-in fade-in-delay-2">{site.bio}</p>
+        <div class="hero-actions fade-in fade-in-delay-3">
+          <a href="/contact/" class="btn btn-primary">Get in touch &rarr;</a>
+          <a href="/about/" class="btn btn-outline">About me</a>
+        </div>
+        <div class="hero-stats fade-in fade-in-delay-4">
+          <div class="stat-item">
+            <span class="stat-label">Focus</span>
+            <span class="stat-value">{site.stats.focus}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Stack</span>
+            <span class="stat-value">{site.stats.stack}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Learning</span>
+            <span class="stat-value">{site.stats.learning}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Location</span>
+            <span class="stat-value">{site.location}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="section-label fade-in">Skills and Technologies</p>
+      <h2 class="section-title fade-in fade-in-delay-1">What I work with</h2>
+      <p class="section-desc fade-in fade-in-delay-2">
+        A curated stack of tools and technologies I use to build reliable, scalable web applications.
+      </p>
+      <div class="skills-grid">
+        {allSkills.map((group, i) => (
+          <div class={`card fade-in fade-in-delay-${i + 1}`}>
+            <p class="skill-card-label">{group.label}</p>
+            <div class="skill-list">
+              {group.items.map(skill => (
+                <span class="skill-chip">{skill}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="card fade-in" style="background:linear-gradient(135deg, rgba(139,92,246,0.08), rgba(99,102,241,0.04));">
+        <p class="section-label" style="margin-bottom:0.5rem">Currently Exploring</p>
+        <h3 style="margin-bottom:1rem; color:var(--text)">Always learning, always growing</h3>
+        <div class="tags">
+          {site.skills.currentlyLearning.map(item => (
+            <span class="tag">{item}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="card fade-in" style="text-align:center; padding:3.5rem 2rem;">
+        <h2 style="margin-bottom:1rem;">Let&apos;s build something together</h2>
+        <p style="max-width:480px; margin:0 auto 2rem;">
+          I am currently open to freelance and full-time opportunities. If you have a project in mind, let&apos;s talk.
+        </p>
+        <a href="/contact/" class="btn btn-primary">Start a conversation</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

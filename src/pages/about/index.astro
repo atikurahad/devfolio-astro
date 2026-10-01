@@ -1,0 +1,104 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site.ts';
+---
+<BaseLayout title="About" description="Learn more about Atikur Rahaman Ahad - Full Stack Web Developer from Bangladesh.">
+
+  <section class="section" style="padding-top:calc(var(--header-h) + 3rem)">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-portrait fade-in">
+          <div class="portrait-frame">
+            <span>ARA</span>
+          </div>
+          <div class="about-meta">
+            <div class="meta-row">
+              <strong>Location</strong>
+              <span>{site.location}</span>
+            </div>
+            <div class="meta-row">
+              <strong>Role</strong>
+              <span>{site.role}</span>
+            </div>
+            <div class="meta-row">
+              <strong>Status</strong>
+              <span style="color:#4ade80">{site.availability}</span>
+            </div>
+          </div>
+          <div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:0.75rem;">
+            {site.socials.map(s => (
+              <a href={s.url || '#'} target="_blank" rel="noopener" class="btn btn-outline" style="justify-content:center;">
+                {s.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div class="about-content">
+          <p class="section-label fade-in">About Me</p>
+          <h1 class="fade-in fade-in-delay-1" style="margin-bottom:1.5rem;">
+            Building <span class="gradient-text">meaningful</span> software
+          </h1>
+          <div class="fade-in fade-in-delay-2" style="display:flex; flex-direction:column; gap:1rem; margin-bottom:2.5rem;">
+            <p>{site.bio}</p>
+          </div>
+
+          <div class="fade-in fade-in-delay-3">
+            <p class="section-label" style="margin-bottom:0.75rem;">Areas of Focus</p>
+            <div class="tags">
+              {site.experience.focus.map(f => (
+                <span class="tag">{f}</span>
+              ))}
+            </div>
+          </div>
+
+          <hr class="divider" />
+
+          <div class="fade-in">
+            <p class="section-label" style="margin-bottom:0.75rem;">Interests</p>
+            <div class="tags">
+              {site.interests.map(i => (
+                <span class="skill-chip">{i}</span>
+              ))}
+            </div>
+          </div>
+
+          <hr class="divider" />
+
+          <div class="fade-in">
+            <p class="section-label" style="margin-bottom:1.25rem;">Technical Skills</p>
+            <div style="display:flex; flex-direction:column; gap:1.25rem;">
+              <div>
+                <p style="font-size:0.8rem; color:var(--muted); margin-bottom:0.6rem; text-transform:uppercase; letter-spacing:0.08em;">Frontend</p>
+                <div class="skill-list">
+                  {site.skills.frontend.map(s => <span class="skill-chip">{s}</span>)}
+                </div>
+              </div>
+              <div>
+                <p style="font-size:0.8rem; color:var(--muted); margin-bottom:0.6rem; text-transform:uppercase; letter-spacing:0.08em;">Backend</p>
+                <div class="skill-list">
+                  {site.skills.backend.map(s => <span class="skill-chip">{s}</span>)}
+                </div>
+              </div>
+              <div>
+                <p style="font-size:0.8rem; color:var(--muted); margin-bottom:0.6rem; text-transform:uppercase; letter-spacing:0.08em;">Database</p>
+                <div class="skill-list">
+                  {site.skills.database.map(s => <span class="skill-chip">{s}</span>)}
+                </div>
+              </div>
+              <div>
+                <p style="font-size:0.8rem; color:var(--muted); margin-bottom:0.6rem; text-transform:uppercase; letter-spacing:0.08em;">Tools</p>
+                <div class="skill-list">
+                  {site.skills.tools.map(s => <span class="skill-chip">{s}</span>)}
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

@@ -1,0 +1,99 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site.ts';
+---
+<BaseLayout title="Contact" description="Get in touch with Atikur Rahaman Ahad for freelance or full-time opportunities.">
+
+  <section class="section" style="padding-top:calc(var(--header-h) + 3rem)">
+    <div class="container">
+      <div class="contact-grid">
+
+        <div class="fade-in">
+          <p class="section-label">Contact</p>
+          <h1 style="margin-bottom:1rem;">Let&apos;s <span class="gradient-text">connect</span></h1>
+          <p style="margin-bottom:2rem;">
+            Whether you have a project idea, a job opportunity, or just want to say hi — my inbox is always open.
+          </p>
+
+          <div style="display:flex; flex-direction:column; gap:1.25rem; margin-bottom:2.5rem;">
+            <div class="card" style="padding:1.25rem; display:flex; align-items:center; gap:1rem;">
+              <div style="width:40px; height:40px; border-radius:10px; background:var(--accent-glow); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0;">
+                &#9993;
+              </div>
+              <div>
+                <p style="font-size:0.75rem; color:var(--muted); margin-bottom:2px;">Email</p>
+                <p style="color:var(--text); font-weight:500;">{site.contact.email || 'Available on request'}</p>
+              </div>
+            </div>
+            <div class="card" style="padding:1.25rem; display:flex; align-items:center; gap:1rem;">
+              <div style="width:40px; height:40px; border-radius:10px; background:var(--accent-glow); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0;">
+                &#127757;
+              </div>
+              <div>
+                <p style="font-size:0.75rem; color:var(--muted); margin-bottom:2px;">Location</p>
+                <p style="color:var(--text); font-weight:500;">{site.location}</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="section-label" style="margin-bottom:0.75rem;">Find me on</p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.75rem;">
+            {site.socials.map(s => (
+              <a href={s.url || '#'} target="_blank" rel="noopener" class="social-pill">
+                {s.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div class="fade-in fade-in-delay-2">
+          <div class="card" style="padding:2.5rem;">
+            <h2 style="margin-bottom:0.5rem; font-size:1.4rem;">Send a message</h2>
+            <p style="font-size:0.875rem; margin-bottom:2rem;">I typically respond within 24 hours.</p>
+            <form class="contact-form" id="contact-form">
+              <div class="form-group">
+                <label for="cf-name">Your Name</label>
+                <input type="text" id="cf-name" name="name" placeholder="John Doe" required />
+              </div>
+              <div class="form-group">
+                <label for="cf-email">Email Address</label>
+                <input type="email" id="cf-email" name="email" placeholder="john@example.com" required />
+              </div>
+              <div class="form-group">
+                <label for="cf-subject">Subject</label>
+                <input type="text" id="cf-subject" name="subject" placeholder="Project inquiry, collaboration..." />
+              </div>
+              <div class="form-group">
+                <label for="cf-message">Message</label>
+                <textarea id="cf-message" name="message" placeholder="Tell me about your project or just say hi..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+                Send message &rarr;
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('contact-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type=submit]');
+      if (btn) {
+        btn.textContent = 'Message sent!';
+        btn.style.background = 'linear-gradient(135deg, #4ade80, #22c55e)';
+        btn.disabled = true;
+        setTimeout(() => {
+          btn.textContent = 'Send message';
+          btn.style.background = '';
+          btn.disabled = false;
+          e.target.reset();
+        }, 3000);
+      }
+    });
+  </script>
+
+</BaseLayout>

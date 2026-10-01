@@ -1,0 +1,23 @@
+﻿---
+import { site } from '../data/site.ts';
+---
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">{site.name}</span>
+      <p class="footer-tagline">{site.headline}</p>
+    </div>
+    <nav class="footer-nav">
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/blog/">Blog</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <div class="footer-socials">
+      {site.socials.map((s) => (
+        <a href={s.url || '#'} target="_blank" rel="noopener" class="social-pill">{s.label}</a>
+      ))}
+    </div>
+    <p class="footer-copy">&copy; {new Date().getFullYear()} {site.name} &mdash; Built with Astro</p>
+  </div>
+</footer>

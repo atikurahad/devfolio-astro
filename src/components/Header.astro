@@ -1,0 +1,48 @@
+﻿---
+import { site } from '../data/site.ts';
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about/' },
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Contact', href: '/contact/' },
+];
+const current = Astro.url.pathname;
+---
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="/" class="header-logo" aria-label="Home">
+      <span class="logo-text">{site.name.split(' ')[0]}</span><span class="logo-accent">.</span>
+    </a>
+    <nav class="header-nav" id="main-nav">
+      {navLinks.map(link => (
+        <a href={link.href} class={`nav-link${current === link.href ? ' active' : ''}`}>{link.label}</a>
+      ))}
+    </nav>
+    <div class="header-actions">
+      {site.openToWork && <span class="available-badge"><span class="badge-dot"></span>Open to work</span>}
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobile-nav">
+    {navLinks.map(link => (
+      <a href={link.href} class={`mobile-nav-link${current === link.href ? ' active' : ''}`}>{link.label}</a>
+    ))}
+  </div>
+</header>
+<script>
+  const ham = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  ham?.addEventListener('click', () => {
+    const open = ham.getAttribute('aria-expanded') === 'true';
+    ham.setAttribute('aria-expanded', String(!open));
+    ham.classList.toggle('open', !open);
+    mobileNav?.classList.toggle('open', !open);
+  });
+  // Scrolled effect
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header?.classList.toggle('scrolled', window.scrollY > 20);
+  });
+</script>
