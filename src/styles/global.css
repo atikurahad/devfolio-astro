@@ -591,8 +591,8 @@ p { color: var(--text-secondary); }
    ============================== */
 .dev-illustration-wrap {
   position: relative;
-  width: 360px;
-  height: 360px;
+  width: 480px;
+  height: 480px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -634,7 +634,8 @@ p { color: var(--text-secondary); }
   animation: orbit-spin linear infinite;
 }
 .orbit-1 { width: 280px; height: 280px; animation-duration: 18s; }
-.orbit-2 { width: 350px; height: 350px; animation-duration: 26s; animation-direction: reverse; }
+.orbit-2 { width: 360px; height: 360px; animation-duration: 26s; animation-direction: reverse; }
+.orbit-3 { width: 460px; height: 460px; animation-duration: 40s; }
 @keyframes orbit-spin {
   from { transform: translate(-50%, -50%) rotate(0deg); }
   to { transform: translate(-50%, -50%) rotate(360deg); }
@@ -658,14 +659,26 @@ p { color: var(--text-secondary); }
   to   { transform: translate(-50%, -50%) rotate(calc(var(--angle) + 360deg)) translateX(130px) rotate(-360deg); }
 }
 .orbit-2 .orbit-icon {
-  --orbit-r: 165px;
+  --orbit-r: 170px;
 }
 @keyframes counter-orbit-spin-2 {
   from { transform: translate(-50%, -50%) rotate(calc(var(--angle) - 0deg)) translateX(var(--orbit-r, 130px)) rotate(0deg); }
   to   { transform: translate(-50%, -50%) rotate(calc(var(--angle) - 360deg)) translateX(var(--orbit-r, 130px)) rotate(360deg); }
 }
 .orbit-2 .orbit-icon { animation-name: counter-orbit-spin-2; width: 36px; height: 36px; }
+/* Orbit 3 â€” outermost ring */
+.orbit-3 .orbit-icon {
+  --orbit-r: 220px;
+  animation-name: counter-orbit-spin-3;
+  animation-duration: 40s;
+}
+@keyframes counter-orbit-spin-3 {
+  from { transform: translate(-50%, -50%) rotate(calc(var(--angle) - 0deg)) translateX(var(--orbit-r, 220px)) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(calc(var(--angle) + 360deg)) translateX(var(--orbit-r, 220px)) rotate(-360deg); }
+}
+.orbit-icon-sm { width: 32px !important; height: 32px !important; border-color: rgba(99,102,241,0.25) !important; }
 .orbit-icon img { width: 22px; height: 22px; object-fit: contain; }
+.orbit-icon-sm img { width: 16px !important; height: 16px !important; }
 
 /* ==============================
    MARQUEE
@@ -910,4 +923,18 @@ p { color: var(--text-secondary); }
 @media (max-width: 900px) {
   .skel-about-grid { grid-template-columns: 1fr; }
   .portrait-frame { max-width: 240px; margin: 0 auto; }
+}
+
+
+/* ===== ORBIT RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .dev-illustration-wrap { width: 280px !important; height: 280px !important; }
+  .orbit-3 { display: none !important; }
+  .orbit-2 { width: 260px !important; height: 260px !important; }
+  .orbit-2 .orbit-icon { --orbit-r: 122px !important; }
+}
+@media (max-width: 900px) and (min-width: 481px) {
+  .dev-illustration-wrap { width: 380px !important; height: 380px !important; }
+  .orbit-3 { width: 360px !important; height: 360px !important; }
+  .orbit-3 .orbit-icon { --orbit-r: 172px !important; }
 }

@@ -1,5 +1,5 @@
-﻿---
-// DeveloperIllustration.astro — animated SVG developer illustration
+---
+// DeveloperIllustration.astro — animated SVG developer illustration with rich orbiting tech icons
 ---
 <div class="dev-illustration-wrap">
   <div class="dev-avatar-ring">
@@ -24,18 +24,18 @@
         <circle cx="50" cy="78" r="3" fill="#ef4444"/>
         <circle cx="61" cy="78" r="3" fill="#f59e0b"/>
         <circle cx="72" cy="78" r="3" fill="#22c55e"/>
-        <!-- Floating icons -->
+        <!-- Floating labels inside SVG -->
         <g class="float-icon float-icon-1">
-          <circle cx="170" cy="50" r="18" fill="#1a1b26" stroke="#8b5cf6" stroke-width="1.5"/>
-          <text x="170" y="56" text-anchor="middle" font-size="14" fill="#8b5cf6">{}</text>
+          <circle cx="170" cy="50" r="18" fill="#1a1b26" stroke="#f7df1e" stroke-width="1.5"/>
+          <text x="170" y="55" text-anchor="middle" font-size="9" fill="#f7df1e" font-weight="700">JS</text>
         </g>
         <g class="float-icon float-icon-2">
-          <circle cx="30" cy="55" r="18" fill="#1a1b26" stroke="#6366f1" stroke-width="1.5"/>
-          <text x="30" y="61" text-anchor="middle" font-size="12" fill="#6366f1">TS</text>
+          <circle cx="30" cy="55" r="18" fill="#1a1b26" stroke="#3178c6" stroke-width="1.5"/>
+          <text x="30" y="60" text-anchor="middle" font-size="9" fill="#3178c6" font-weight="700">TS</text>
         </g>
         <g class="float-icon float-icon-3">
-          <circle cx="165" cy="160" r="16" fill="#1a1b26" stroke="#a78bfa" stroke-width="1.5"/>
-          <text x="165" y="165" text-anchor="middle" font-size="10" fill="#a78bfa">DB</text>
+          <circle cx="165" cy="160" r="16" fill="#1a1b26" stroke="#61dafb" stroke-width="1.5"/>
+          <text x="165" y="165" text-anchor="middle" font-size="8" fill="#61dafb" font-weight="700">Rx</text>
         </g>
         <defs>
           <radialGradient id="bg-grad" cx="50%" cy="50%" r="50%">
@@ -46,17 +46,68 @@
       </svg>
     </div>
   </div>
-  <!-- Orbiting tech icons -->
+
+  <!-- Orbit Ring 1 — Core frontend (JS, React, Node, TS) -->
   <div class="orbit-ring orbit-1">
-    <div class="orbit-icon" style="--angle:0deg"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS" width="28" height="28"/></div>
-    <div class="orbit-icon" style="--angle:90deg"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" width="28" height="28"/></div>
-    <div class="orbit-icon" style="--angle:180deg"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" width="28" height="28"/></div>
-    <div class="orbit-icon" style="--angle:270deg"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TS" width="28" height="28"/></div>
+    <div class="orbit-icon" style="--angle:0deg">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" width="22" height="22"/>
+    </div>
+    <div class="orbit-icon" style="--angle:90deg">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" width="22" height="22"/>
+    </div>
+    <div class="orbit-icon" style="--angle:180deg">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" width="22" height="22"/>
+    </div>
+    <div class="orbit-icon" style="--angle:270deg">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" width="22" height="22"/>
+    </div>
   </div>
+
+  <!-- Orbit Ring 2 — Databases + devops (5 icons, evenly spaced at 72deg) -->
   <div class="orbit-ring orbit-2">
-    <div class="orbit-icon" style="--angle:45deg"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" width="24" height="24"/></div>
-    <div class="orbit-icon" style="--angle:135deg"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" width="24" height="24"/></div>
-    <div class="orbit-icon" style="--angle:225deg"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" width="24" height="24"/></div>
-    <div class="orbit-icon" style="--angle:315deg"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" width="24" height="24"/></div>
+    <div class="orbit-icon" style="--angle:0deg">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" width="20" height="20"/>
+    </div>
+    <div class="orbit-icon" style="--angle:72deg">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" width="20" height="20"/>
+    </div>
+    <div class="orbit-icon" style="--angle:144deg">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" width="20" height="20"/>
+    </div>
+    <div class="orbit-icon" style="--angle:216deg">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" width="20" height="20"/>
+    </div>
+    <div class="orbit-icon" style="--angle:288deg">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" width="20" height="20"/>
+    </div>
+  </div>
+
+  <!-- Orbit Ring 3 — Extended stack (Rust, Python, Next.js, Tailwind, GitHub, Figma, Linux, Express) -->
+  <div class="orbit-ring orbit-3">
+    <div class="orbit-icon orbit-icon-sm" style="--angle:0deg">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg" alt="Rust" width="16" height="16"/>
+    </div>
+    <div class="orbit-icon orbit-icon-sm" style="--angle:45deg">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" width="16" height="16"/>
+    </div>
+    <div class="orbit-icon orbit-icon-sm" style="--angle:90deg">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" width="16" height="16"/>
+    </div>
+    <div class="orbit-icon orbit-icon-sm" style="--angle:135deg">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" width="16" height="16"/>
+    </div>
+    <div class="orbit-icon orbit-icon-sm" style="--angle:180deg">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" width="16" height="16"/>
+    </div>
+    <div class="orbit-icon orbit-icon-sm" style="--angle:225deg">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" width="16" height="16"/>
+    </div>
+    <div class="orbit-icon orbit-icon-sm" style="--angle:270deg">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" width="16" height="16"/>
+    </div>
+    <div class="orbit-icon orbit-icon-sm" style="--angle:315deg">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express.js" width="16" height="16"/>
+    </div>
   </div>
 </div>
+
