@@ -27,6 +27,7 @@
   --badge-border: rgba(74,222,128,0.2);
   --skel-bg: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
   --shadow-card: 0 12px 40px var(--accent-glow);
+  --icon-bg: #ffffff;
 }
 
 [data-theme="light"] {
@@ -51,6 +52,7 @@
   --badge-border: rgba(21,128,61,0.2);
   --skel-bg: linear-gradient(90deg, rgba(0,0,0,0.04) 25%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.04) 75%);
   --shadow-card: 0 12px 30px rgba(124, 58, 237, 0.12);
+  --icon-bg: #ffffff;
 }
 
 /* ===== RESET ===== */
@@ -774,12 +776,18 @@ p { color: var(--text-secondary); }
   top: 50%; left: 50%;
   width: 40px; height: 40px;
   border-radius: 50%;
-  background: var(--bg-2, #0f1117);
-  border: 1px solid rgba(139,92,246,0.3);
+  background: var(--icon-bg, #ffffff);
+  border: 1.5px solid var(--accent);
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5), 0 0 14px var(--accent-glow);
   /* counter-rotate so icons stay upright */
   animation: counter-orbit-spin linear infinite;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.orbit-icon:hover {
+  transform: scale(1.25) !important;
+  box-shadow: 0 0 20px var(--accent), 0 0 30px var(--accent-glow);
+  z-index: 20;
 }
 .orbit-1 .orbit-icon { animation-duration: 18s; }
 .orbit-2 .orbit-icon { animation-duration: 26s; animation-direction: reverse; }
@@ -795,7 +803,7 @@ p { color: var(--text-secondary); }
   to   { transform: translate(-50%, -50%) rotate(calc(var(--angle) - 360deg)) translateX(var(--orbit-r, 130px)) rotate(360deg); }
 }
 .orbit-2 .orbit-icon { animation-name: counter-orbit-spin-2; width: 36px; height: 36px; }
-/* Orbit 3 â€” outermost ring */
+/* Orbit 3 — outermost ring */
 .orbit-3 .orbit-icon {
   --orbit-r: 220px;
   animation-name: counter-orbit-spin-3;
@@ -805,9 +813,9 @@ p { color: var(--text-secondary); }
   from { transform: translate(-50%, -50%) rotate(calc(var(--angle) - 0deg)) translateX(var(--orbit-r, 220px)) rotate(0deg); }
   to   { transform: translate(-50%, -50%) rotate(calc(var(--angle) + 360deg)) translateX(var(--orbit-r, 220px)) rotate(-360deg); }
 }
-.orbit-icon-sm { width: 32px !important; height: 32px !important; border-color: rgba(99,102,241,0.25) !important; }
-.orbit-icon img { width: 22px; height: 22px; object-fit: contain; }
-.orbit-icon-sm img { width: 16px !important; height: 16px !important; }
+.orbit-icon-sm { width: 32px !important; height: 32px !important; border-color: var(--accent) !important; }
+.orbit-icon img { width: 22px; height: 22px; object-fit: contain; filter: none !important; }
+.orbit-icon-sm img { width: 16px !important; height: 16px !important; filter: none !important; }
 
 /* ==============================
    MARQUEE
@@ -894,10 +902,11 @@ p { color: var(--text-secondary); }
   width: 44px; height: 44px;
   display: flex; align-items: center; justify-content: center;
   border-radius: 10px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: var(--icon-bg, #ffffff);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
-.skill-tech-icon { object-fit: contain; }
+.skill-tech-icon { object-fit: contain; filter: none !important; }
 .skill-icon-name { font-size: 0.68rem; color: var(--muted); text-align: center; line-height: 1.2; }
 
 /* ==============================
@@ -920,12 +929,13 @@ p { color: var(--text-secondary); }
 .db-card-icon-wrap {
   width: 64px; height: 64px;
   display: flex; align-items: center; justify-content: center;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: var(--icon-bg, #ffffff);
+  border: 1px solid var(--border);
   border-radius: 14px;
   padding: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
 }
-.db-card-icon-wrap img { object-fit: contain; }
+.db-card-icon-wrap img { object-fit: contain; filter: none !important; }
 .db-card-name { font-size: 1.1rem; font-weight: 600; color: var(--text); margin: 0; }
 .db-card-desc { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
 
