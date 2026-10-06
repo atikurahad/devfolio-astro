@@ -565,23 +565,34 @@ p { color: var(--text-secondary); }
   width: 100%;
   aspect-ratio: 4/5;
   border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(99,102,241,0.1));
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 4rem;
-  letter-spacing: -0.02em;
-  font-weight: 800;
-  color: var(--accent);
+  background: #0d0e14;
+  border: 1px solid rgba(139, 92, 246, 0.3);
   position: relative;
   overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(139, 92, 246, 0.12);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
 }
-.portrait-frame::before {
-  content: '';
+.portrait-frame:hover {
+  transform: translateY(-4px);
+  border-color: rgba(139, 92, 246, 0.6);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(139, 92, 246, 0.25);
+}
+.portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+.portrait-frame:hover .portrait-img {
+  transform: scale(1.04);
+}
+.portrait-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(139,92,246,0.08), transparent);
+  background: linear-gradient(to top, rgba(10, 11, 15, 0.6) 0%, rgba(10, 11, 15, 0.05) 40%, transparent 100%);
+  pointer-events: none;
 }
 .about-meta { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1.5rem; }
 .meta-row { display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem; color: var(--text-secondary); }
@@ -744,7 +755,18 @@ p { color: var(--text-secondary); }
   0%, 100% { box-shadow: 0 0 40px rgba(139,92,246,0.2); }
   50% { box-shadow: 0 0 80px rgba(139,92,246,0.4); }
 }
-.dev-avatar-inner { width: 188px; height: 188px; border-radius: 50%; overflow: hidden; }
+.dev-avatar-inner { width: 188px; height: 188px; border-radius: 50%; overflow: hidden; background: #0d0e14; position: relative; }
+.dev-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  border-radius: 50%;
+  transition: transform 0.5s ease;
+}
+.dev-avatar-ring:hover .dev-avatar-img {
+  transform: scale(1.06);
+}
 .dev-svg { width: 100%; height: 100%; }
 .float-icon { animation: float-bob 3s ease-in-out infinite; }
 .float-icon-1 { animation-delay: 0s; }
