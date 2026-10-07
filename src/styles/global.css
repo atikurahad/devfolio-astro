@@ -125,13 +125,23 @@ p { color: var(--text-secondary); }
   gap: 2rem;
 }
 .header-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   font-size: 1.3rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   flex-shrink: 0;
-  transition: opacity var(--transition);
+  transition: opacity var(--transition), transform var(--transition);
 }
-.header-logo:hover { opacity: 0.8; }
+.header-logo-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+}
+.header-logo:hover { opacity: 0.9; transform: translateY(-1px); }
 .logo-text { color: var(--text); }
 .logo-accent { color: var(--accent); }
 .header-nav {
