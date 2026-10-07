@@ -81,20 +81,20 @@ export const site = {
   socials: [
     {
       label: "GitHub",
-      url: "",
+      url: "https://github.com/atikurahad",
     },
     {
       label: "LinkedIn",
-      url: "",
+      url: "https://linkedin.com/in/atikurahad",
     },
     {
-      label: "YouTube",
-      url: "",
+      label: "Twitter / X",
+      url: "https://x.com",
     },
   ],
 
   contact: {
-    email: "",
+    email: "atikurrahamanahad@gmail.com",
   },
 
   stats: {
