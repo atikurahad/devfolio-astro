@@ -9,7 +9,7 @@ export const site = {
   bio:
     "I’m a Full Stack Web Developer focused on building modern, scalable, and maintainable web applications. I work primarily with JavaScript and TypeScript across the frontend and backend, with experience in React, Next.js, Node.js, Express, and MongoDB. I enjoy turning ideas and designs into reliable digital products while continuously improving my engineering skills.",
 
-  location: "Bangladesh",
+  location: "Dhaka, Bangladesh",
 
   openToWork: true,
 
@@ -94,7 +94,7 @@ export const site = {
   ],
 
   contact: {
-    email: "atikurrahamanahad@gmail.com",
+    email: "atikurahad.soft@gmail.com",
   },
 
   stats: {
