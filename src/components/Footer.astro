@@ -1,13 +1,163 @@
-﻿---
-import { site } from '../data/site.ts';
 ---
+import { site } from '../data/site.ts';
+
+const ecoQuotes = [
+  {
+    quote: "Keep a green tree in your heart and perhaps a singing bird will come.",
+    author: "Ancient Proverb",
+    note: "Harmony with nature invites life and joy"
+  },
+  {
+    quote: "The true meaning of life is to plant trees, under whose shade you do not expect to sit.",
+    author: "Nelson Henderson",
+    note: "Planting hope for future generations"
+  },
+  {
+    quote: "The best time to plant a tree was 20 years ago. The second best time is now.",
+    author: "Folk Proverb",
+    note: "Every moment is a chance to heal our Earth"
+  },
+  {
+    quote: "He that plants trees loves others besides himself.",
+    author: "Thomas Fuller",
+    note: "A selfless gift of oxygen, shelter, and shade"
+  },
+  {
+    quote: "Forests are the lungs of our land, purifying the air and giving fresh strength to our people.",
+    author: "Franklin D. Roosevelt",
+    note: "Protecting living ecosystems"
+  }
+];
+---
+
 <footer class="site-footer">
+  <div class="footer-eco-container fade-in">
+    <div class="eco-card">
+      <!-- Ambient light effect -->
+      <div class="eco-ambient-glow" aria-hidden="true"></div>
+
+      <!-- Left Column: Quote & Message -->
+      <div class="eco-content">
+        <div class="eco-badge">
+          <span class="eco-badge-dot"></span>
+          <span class="eco-badge-icon">🌱</span>
+          <span class="eco-badge-text">Green Earth Initiative &bull; Save Our Planet</span>
+        </div>
+
+        <div class="eco-quote-box">
+          <svg class="eco-quote-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+          </svg>
+
+          <blockquote class="eco-blockquote">
+            <p id="eco-quote-text" class="eco-quote-text">
+              “{ecoQuotes[0].quote}”
+            </p>
+            <div class="eco-author-wrap">
+              <span class="eco-dash">&mdash;</span>
+              <cite id="eco-author-text" class="eco-author">{ecoQuotes[0].author}</cite>
+              <span id="eco-note-text" class="eco-note">({ecoQuotes[0].note})</span>
+            </div>
+          </blockquote>
+        </div>
+
+        <p class="eco-description">
+          Trees are the silent guardians of life on Earth. Every leafy canopy filters our atmosphere, cradles wildlife, and restores balance to our changing climate. As developers shaping tomorrow's digital landscapes, let us always cherish and protect the living green world.
+        </p>
+
+        <!-- Eco Pillars / Highlights -->
+        <div class="eco-pillars">
+          <div class="eco-pill">
+            <span class="eco-pill-emoji">🍃</span>
+            <span>Pure Oxygen</span>
+          </div>
+          <div class="eco-pill">
+            <span class="eco-pill-emoji">🕊️</span>
+            <span>Wildlife Sanctuary</span>
+          </div>
+          <div class="eco-pill">
+            <span class="eco-pill-emoji">🌍</span>
+            <span>Climate Balance</span>
+          </div>
+          <div class="eco-pill">
+            <span class="eco-pill-emoji">💧</span>
+            <span>Soil & Water Health</span>
+          </div>
+        </div>
+
+        <!-- Interactive Quote Switcher & TeamTrees CTA -->
+        <div class="eco-actions">
+          <a
+            href="https://teamtrees.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="eco-cta-btn"
+          >
+            <span class="cta-icon">🌿</span>
+            <span>Plant a Tree with #TeamTrees</span>
+            <svg class="cta-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+
+          <button
+            type="button"
+            id="next-eco-quote"
+            class="eco-cycle-btn"
+            title="Click to read another inspirational green quote"
+          >
+            <svg class="cycle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+            </svg>
+            <span>Next Quote</span>
+            <span id="eco-counter" class="eco-counter-badge">1 / {ecoQuotes.length}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Column: Visual illustration featuring the user's tree image -->
+      <div class="eco-visual">
+        <div class="eco-visual-frame">
+          <!-- Animated micro-nature floating elements -->
+          <div class="floating-particle p1" aria-hidden="true">🍃</div>
+          <div class="floating-particle p2" aria-hidden="true">✨</div>
+          <div class="floating-particle p3" aria-hidden="true">🌿</div>
+
+          <!-- Tree Image Container with soft backdrop glow -->
+          <div class="eco-img-backdrop" aria-hidden="true"></div>
+          <div class="eco-image-wrapper">
+            <img
+              src="/images/green-trees.png"
+              alt="Lush green trees with birds soaring into the clear sky, symbolizing reforestation and a healthy Earth"
+              class="eco-image"
+              width="316"
+              height="159"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Bottom ground line / horizon -->
+          <div class="eco-horizon-bar"></div>
+        </div>
+
+        <div class="eco-visual-caption">
+          <span class="caption-pulse"></span>
+          <span class="caption-text">Rooted in Earth &bull; Flourishing for Generations</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Standard Footer Navigation and Info -->
   <div class="footer-inner">
     <div class="footer-brand">
       <span class="footer-logo">{site.name}</span>
       <p class="footer-tagline">{site.headline}</p>
+      <p class="footer-location">📍 {site.location} &bull; Coding sustainably</p>
     </div>
-    <nav class="footer-nav">
+    <nav class="footer-nav" aria-label="Footer Navigation">
       <a href="/">Home</a>
       <a href="/about/">About</a>
       <a href="/blog/">Blog</a>
@@ -18,6 +168,511 @@ import { site } from '../data/site.ts';
         <a href={s.url || '#'} target="_blank" rel="noopener" class="social-pill">{s.label}</a>
       ))}
     </div>
-    <p class="footer-copy">&copy; {new Date().getFullYear()} {site.name} &mdash; Built with Astro</p>
+    <p class="footer-copy">
+      &copy; {new Date().getFullYear()} {site.name} &mdash; Built with Astro &bull; Dedicated to a cleaner, greener world
+    </p>
   </div>
 </footer>
+
+<script is:inline define:vars={{ ecoQuotes }}>
+  (function() {
+    const quotes = ecoQuotes || [];
+    let currentIndex = 0;
+
+    const textEl = document.getElementById('eco-quote-text');
+    const authorEl = document.getElementById('eco-author-text');
+    const noteEl = document.getElementById('eco-note-text');
+    const counterEl = document.getElementById('eco-counter');
+    const cycleBtn = document.getElementById('next-eco-quote');
+
+    if (!cycleBtn || quotes.length === 0) return;
+
+    cycleBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % quotes.length;
+      const next = quotes[currentIndex];
+
+      if (textEl && authorEl) {
+        textEl.style.opacity = '0';
+        textEl.style.transform = 'translateY(6px)';
+
+        setTimeout(() => {
+          textEl.textContent = `“${next.quote}”`;
+          authorEl.textContent = next.author;
+          if (noteEl) {
+            noteEl.textContent = next.note ? `(${next.note})` : '';
+          }
+          if (counterEl) {
+            counterEl.textContent = `${currentIndex + 1} / ${quotes.length}`;
+          }
+          textEl.style.opacity = '1';
+          textEl.style.transform = 'translateY(0)';
+        }, 180);
+      }
+    });
+  })();
+</script>
+
+<style>
+  /* ===== ECO BANNER STYLING ===== */
+  .footer-eco-container {
+    max-width: var(--max-w);
+    margin: 0 auto 3rem;
+    padding: 0 24px;
+  }
+
+  .eco-card {
+    position: relative;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(5, 150, 105, 0.04) 40%, rgba(15, 23, 42, 0.6) 100%);
+    border: 1px solid rgba(34, 197, 94, 0.22);
+    box-shadow: 0 16px 40px -12px rgba(16, 185, 129, 0.14), 0 0 0 1px rgba(34, 197, 94, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.25fr 0.95fr;
+    gap: 2.5rem;
+    padding: 2.5rem;
+    align-items: center;
+    transition: border-color var(--transition), box-shadow var(--transition);
+  }
+
+  [data-theme="light"] .eco-card {
+    background: linear-gradient(135deg, rgba(240, 253, 244, 0.92) 0%, rgba(220, 252, 231, 0.65) 50%, rgba(255, 255, 255, 0.9) 100%);
+    border: 1px solid rgba(22, 163, 74, 0.22);
+    box-shadow: 0 16px 36px -12px rgba(22, 163, 74, 0.12), 0 0 0 1px rgba(22, 163, 74, 0.06);
+  }
+
+  .eco-card:hover {
+    border-color: rgba(34, 197, 94, 0.38);
+    box-shadow: 0 20px 48px -10px rgba(16, 185, 129, 0.22), 0 0 20px rgba(34, 197, 94, 0.12);
+  }
+
+  .eco-ambient-glow {
+    position: absolute;
+    inset: -40px;
+    background: radial-gradient(circle at 85% 75%, rgba(34, 197, 94, 0.15), transparent 50%),
+                radial-gradient(circle at 15% 20%, rgba(16, 185, 129, 0.08), transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Left Column */
+  .eco-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+  }
+
+  .eco-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    align-self: flex-start;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.28);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #4ade80;
+    letter-spacing: 0.01em;
+  }
+
+  [data-theme="light"] .eco-badge {
+    background: rgba(22, 163, 74, 0.1);
+    border-color: rgba(22, 163, 74, 0.25);
+    color: #15803d;
+  }
+
+  .eco-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 8px #22c55e;
+    animation: pulseDot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseDot {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.4); opacity: 0.7; }
+  }
+
+  .eco-quote-box {
+    position: relative;
+    padding-left: 1rem;
+    border-left: 3px solid rgba(34, 197, 94, 0.4);
+  }
+
+  [data-theme="light"] .eco-quote-box {
+    border-left-color: rgba(22, 163, 74, 0.5);
+  }
+
+  .eco-quote-mark {
+    width: 24px;
+    height: 24px;
+    color: rgba(34, 197, 94, 0.28);
+    margin-bottom: 0.35rem;
+  }
+
+  [data-theme="light"] .eco-quote-mark {
+    color: rgba(22, 163, 74, 0.3);
+  }
+
+  .eco-quote-text {
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--text);
+    font-style: italic;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    margin: 0;
+  }
+
+  .eco-author-wrap {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.45rem;
+    font-size: 0.85rem;
+  }
+
+  .eco-dash {
+    color: #22c55e;
+    font-weight: 700;
+  }
+
+  .eco-author {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .eco-note {
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  .eco-description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  /* Pillars */
+  .eco-pillars {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .eco-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border);
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: all var(--transition);
+  }
+
+  [data-theme="light"] .eco-pill {
+    background: rgba(255, 255, 255, 0.75);
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .eco-pill:hover {
+    border-color: rgba(34, 197, 94, 0.4);
+    color: #22c55e;
+    background: rgba(34, 197, 94, 0.08);
+    transform: translateY(-1px);
+  }
+
+  /* Actions */
+  .eco-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.35rem;
+  }
+
+  .eco-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.15rem;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+    transition: all var(--transition);
+  }
+
+  .eco-cta-btn:hover {
+    background: linear-gradient(135deg, #059669, #047857);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+    transform: translateY(-2px);
+    color: #ffffff;
+  }
+
+  .cta-arrow {
+    transition: transform 0.2s ease;
+  }
+
+  .eco-cta-btn:hover .cta-arrow {
+    transform: translate(2px, -2px);
+  }
+
+  .eco-cycle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0.95rem;
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all var(--transition);
+  }
+
+  [data-theme="light"] .eco-cycle-btn {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.12);
+  }
+
+  .eco-cycle-btn:hover {
+    border-color: rgba(34, 197, 94, 0.4);
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+    transform: translateY(-1px);
+  }
+
+  .eco-cycle-btn:active .cycle-icon {
+    transform: rotate(180deg);
+  }
+
+  .cycle-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .eco-counter-badge {
+    padding: 0.15rem 0.45rem;
+    border-radius: 999px;
+    background: rgba(34, 197, 94, 0.16);
+    color: #22c55e;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+
+  /* Right Column: Visual illustration */
+  .eco-visual {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .eco-visual-frame {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 16px;
+    background: radial-gradient(ellipse at 50% 80%, rgba(34, 197, 94, 0.12), transparent 70%);
+    border: 1px solid rgba(34, 197, 94, 0.15);
+    padding: 1.5rem 1.25rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    transition: transform var(--transition);
+  }
+
+  [data-theme="light"] .eco-visual-frame {
+    background: radial-gradient(ellipse at 50% 80%, rgba(34, 197, 94, 0.15), rgba(255, 255, 255, 0.8) 70%);
+    border-color: rgba(22, 163, 74, 0.18);
+  }
+
+  .eco-visual-frame:hover {
+    transform: translateY(-3px);
+  }
+
+  .eco-img-backdrop {
+    position: absolute;
+    width: 220px;
+    height: 180px;
+    bottom: 20px;
+    background: radial-gradient(circle, rgba(34, 197, 94, 0.22) 0%, rgba(16, 185, 129, 0.05) 50%, transparent 75%);
+    filter: blur(20px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .eco-image-wrapper {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .eco-image {
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 18px rgba(16, 185, 129, 0.25));
+    transition: transform 0.4s ease, filter 0.4s ease;
+  }
+
+  .eco-visual-frame:hover .eco-image {
+    transform: scale(1.02);
+    filter: drop-shadow(0 12px 24px rgba(16, 185, 129, 0.35));
+  }
+
+  /* Ground Horizon line */
+  .eco-horizon-bar {
+    width: 90%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.5), rgba(16, 185, 129, 0.8), rgba(34, 197, 94, 0.5), transparent);
+    border-radius: 99px;
+    margin-top: 4px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+  }
+
+  /* Floating micro-particles */
+  .floating-particle {
+    position: absolute;
+    font-size: 0.95rem;
+    pointer-events: none;
+    user-select: none;
+    z-index: 2;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  }
+
+  .p1 {
+    top: 15%;
+    left: 12%;
+    animation: driftLeaf1 6s ease-in-out infinite;
+  }
+
+  .p2 {
+    top: 20%;
+    right: 18%;
+    font-size: 0.75rem;
+    animation: twinkleGlow 3s ease-in-out infinite;
+  }
+
+  .p3 {
+    top: 55%;
+    right: 8%;
+    font-size: 0.85rem;
+    animation: driftLeaf2 7s ease-in-out infinite;
+  }
+
+  @keyframes driftLeaf1 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(8px, -12px) rotate(15deg); }
+  }
+
+  @keyframes driftLeaf2 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-6px, 10px) rotate(-12deg); }
+  }
+
+  @keyframes twinkleGlow {
+    0%, 100% { opacity: 0.3; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+
+  .eco-visual-caption {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 0.85rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .caption-pulse {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10b981;
+    display: inline-block;
+  }
+
+  .footer-location {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 0.35rem;
+  }
+
+  /* Responsive layout adjustments */
+  @media (max-width: 868px) {
+    .eco-card {
+      grid-template-columns: 1fr;
+      padding: 1.75rem;
+      gap: 2rem;
+    }
+
+    .eco-visual {
+      order: -1;
+    }
+
+    .eco-visual-frame {
+      max-width: 100%;
+      padding: 1.25rem 1rem 0.5rem;
+    }
+
+    .eco-image {
+      max-width: 280px;
+    }
+
+    .eco-quote-text {
+      font-size: 1.05rem;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .footer-eco-container {
+      padding: 0 16px;
+    }
+
+    .eco-card {
+      padding: 1.35rem;
+    }
+
+    .eco-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .eco-cta-btn, .eco-cycle-btn {
+      justify-content: center;
+    }
+  }
+</style>
